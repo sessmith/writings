@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Longhand — essays &amp; reflections</title>
+<meta name="description" content="Personal essays and reflections — the longer version of thoughts that don't fit in a caption." />
+<meta name="theme-color" content="#FAFAFA" />
+<meta property="og:title" content="Longhand — essays & reflections" />
+<meta property="og:description" content="Personal essays and reflections, written slower than a caption allows." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2316181B'/%3E%3Ccircle cx='50' cy='50' r='11' fill='%23FAFAFA'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAFAFA;
+    --paper-raised: #F2F1EE;
+    --ink: #16181B;
+    --ink-soft: #5C5F64;
+    --ink-faint: #9C9EA1;
+    --accent: #24443A;
+    --accent-bright: #2F5D4E;
+    --border: #E6E5E2;
+    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --max-w: 720px;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+
+  /* accessibility */
+  .skip-link {
+    position: absolute; left: -999px; top: 0; background: var(--accent); color: #fff;
+    padding: .7rem 1.1rem; z-index: 100; font-family: var(--font-display); font-size: .85rem;
+    border-radius: 0 0 6px 0;
+  }
+  .skip-link:focus { left: 0; top: 0; }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
+
+  /* header */
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0;
+    background: rgba(250,250,250,.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 10;
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: .75rem;
+    padding-top: 1.15rem; padding-bottom: 1.15rem;
+  }
+  .site-mark { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; letter-spacing: -.01em; }
+  .nav-links { display: flex; align-items: center; gap: 1.6rem; font-family: var(--font-display); font-size: .85rem; }
+  .nav-links a { color: var(--ink-soft); transition: color .15s ease; white-space: nowrap; }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+  .nav-links a.nav-cta { color: var(--accent); font-weight: 600; }
+  .nav-links a.nav-cta:hover { color: var(--accent-bright); }
+
+  /* hero */
+  .hero { padding-top: 4.5rem; padding-bottom: 3rem; }
+  .eyebrow {
+    font-family: var(--font-display); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 1rem;
+  }
+  .hero-title {
+    font-family: var(--font-serif); font-weight: 500; font-size: clamp(2rem, 4vw + 1rem, 3.2rem);
+    line-height: 1.18; max-width: 14ch; margin: 0 0 1.1rem;
+    animation: fadeUp .6s ease both;
+  }
+  .hero-sub {
+    font-family: var(--font-serif); font-size: 1.05rem; color: var(--ink-soft); max-width: 44ch;
+    line-height: 1.65; margin: 0 0 1.5rem;
+    animation: fadeUp .6s ease .08s both;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: .4rem; font-family: var(--font-display);
+    font-size: .88rem; font-weight: 500; color: var(--accent); border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px; animation: fadeUp .6s ease .16s both;
+  }
+  .hero-cta:hover { color: var(--accent-bright); border-color: var(--accent-bright); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title, .hero-sub, .hero-cta { animation: none; }
+  }
+
+  /* section labels + entry list */
+  .section-label {
+    font-family: var(--font-display); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-faint); margin: 0 0 .5rem;
+  }
+  .entry-list { margin-top: 1rem; }
+  .entry { border-bottom: 1px solid var(--border); }
+  .entry:first-child { border-top: 1px solid var(--border); }
+  .entry-link { display: block; padding: 1.9rem 0; }
+  .entry-date {
+    font-family: var(--font-display); font-size: .8rem; color: var(--ink-faint);
+    display: block; margin-bottom: .5rem;
+  }
+  .entry-title {
+    font-family: var(--font-serif); font-weight: 500; font-size: 1.5rem; margin: 0 0 .5rem;
+    transition: color .15s ease;
+  }
+  .entry:hover .entry-title { color: var(--accent); }
+  .entry-excerpt {
+    font-family: var(--font-serif); color: var(--ink-soft); line-height: 1.6; margin: 0 0 .6rem; max-width: 60ch;
+  }
+  .entry-meta { font-family: var(--font-display); font-size: .76rem; color: var(--ink-faint); margin: 0; }
+  .see-all {
+    display: inline-block; margin-top: 1.8rem; font-family: var(--font-display); font-size: .85rem;
+    color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 2px;
+  }
+  .see-all:hover { border-color: var(--accent); }
+  .empty-msg { color: var(--ink-soft); font-style: italic; font-family: var(--font-serif); }
+
+  /* page heads */
+  .page-head { padding-top: 3.5rem; padding-bottom: .5rem; }
+  .page-title { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 3vw + 1rem, 2.4rem); margin: 0; }
+  .year-label { font-family: var(--font-display); font-size: .85rem; color: var(--ink-faint); margin: 2.2rem 0 0; }
+
+  /* essay detail */
+  .essay-wrap { max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+  .back-link { font-family: var(--font-display); font-size: .82rem; color: var(--ink-soft); margin-bottom: 2rem; display: inline-block; }
+  .back-link:hover { color: var(--accent); }
+  .essay-meta { font-family: var(--font-display); font-size: .82rem; color: var(--ink-faint); margin: 0 0 .8rem; }
+  .essay-title {
+    font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.9rem, 3.4vw + 1rem, 2.7rem);
+    line-height: 1.2; margin: 0 0 .8rem;
+  }
+  .essay-tags { font-family: var(--font-display); font-size: .78rem; color: var(--ink-faint); margin: 0 0 2.4rem; }
+  .essay-tags a:hover { color: var(--accent); }
+  .essay-body { font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.8; color: var(--ink); }
+  .essay-body p { margin: 0 0 1.4rem; }
+  .essay-end { width: 32px; height: 2px; background: var(--accent); margin: 3rem auto; border: none; }
+  .essay-actions { display: flex; justify-content: center; margin-bottom: 3rem; }
+  .copy-link-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--ink-soft);
+    font-family: var(--font-display); font-size: .8rem; padding: .55rem 1.1rem; border-radius: 6px;
+    cursor: pointer; transition: all .15s ease;
+  }
+  .copy-link-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .essay-pagination { display: flex; justify-content: space-between; gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+  .pag-link { display: flex; flex-direction: column; gap: .35rem; font-family: var(--font-serif); font-size: 1.05rem; max-width: 47%; transition: color .15s ease; }
+  .pag-link span { font-family: var(--font-display); font-size: .72rem; color: var(--ink-faint); }
+  .pag-link.next { text-align: right; margin-left: auto; }
+  .pag-link:hover { color: var(--accent); }
+
+  /* about */
+  .about-wrap { padding-top: 3.5rem; padding-bottom: 4rem; }
+  .monogram {
+    width: 84px; height: 84px; border-radius: 50%; border: 1px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; margin-bottom: 1.6rem;
+  }
+  .about-body { font-family: var(--font-serif); font-size: 1.08rem; line-height: 1.75; max-width: 60ch; margin: 1.3rem 0 2rem; }
+  .about-body p { margin: 0 0 1.2rem; }
+  .about-links { display: flex; gap: 1.6rem; font-family: var(--font-display); font-size: .85rem; }
+  .about-links a { color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 2px; }
+  .about-links a:hover { border-color: var(--accent); }
+
+  /* footer */
+  .site-footer { border-top: 1px solid var(--border); margin-top: 2rem; padding: 3rem 0; background: var(--paper-raised); }
+  .footer-inner { display: flex; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap; }
+  .footer-col { flex: 1 1 220px; }
+  .footer-tagline { color: var(--ink-soft); font-size: .92rem; margin: .5rem 0; font-family: var(--font-serif); }
+  .footer-copy { color: var(--ink-faint); font-size: .78rem; font-family: var(--font-display); margin: 0; }
+  .newsletter-form { display: flex; gap: .5rem; max-width: 320px; margin-top: .6rem; }
+  .newsletter-form input {
+    flex: 1; min-width: 0; background: var(--paper); border: 1px solid var(--border); color: var(--ink);
+    padding: .6rem .8rem; font-family: var(--font-display); font-size: .85rem; border-radius: 6px;
+  }
+  .newsletter-form input::placeholder { color: var(--ink-faint); }
+  .newsletter-form input:focus { outline: none; border-color: var(--accent); }
+  .newsletter-form button {
+    background: var(--accent); color: #fff; border: none; padding: .6rem 1.1rem;
+    font-family: var(--font-display); font-size: .82rem; font-weight: 500; cursor: pointer;
+    border-radius: 6px; transition: background .15s ease; white-space: nowrap;
+  }
+  .newsletter-form button:hover { background: var(--accent-bright); }
+  .form-msg { font-family: var(--font-display); font-size: .8rem; color: var(--accent); min-height: 1.2em; margin: .6rem 0 1rem; }
+  .footer-ig { display: inline-block; margin-top: .3rem; font-family: var(--font-display); font-size: .85rem; color: var(--ink-soft); }
+  .footer-ig:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 0 1.25rem; }
+    .hero { padding-top: 3rem; padding-bottom: 2rem; }
+    .footer-inner { flex-direction: column; gap: 2rem; }
+    .essay-pagination { flex-direction: column; }
+    .pag-link.next { text-align: left; margin-left: 0; }
+    .pag-link { max-width: 100%; }
+    .newsletter-form { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div id="app"></div>
+
+  <script>
+    /* ============================================================
+       HOW TO ADD A NEW ESSAY
+       Add a new object to the ESSAYS array below, e.g.:
+       {
+         slug: "my-new-essay",        // used in the URL — lowercase, dashes, must be unique
+         title: "My New Essay",
+         date: "2026-07-20",          // YYYY-MM-DD, controls sort order
+         tags: ["tag-one", "tag-two"],
+         excerpt: "One or two sentence teaser shown in lists.",
+         content: [
+           "First paragraph.",
+           "Second paragraph."
+         ]
+       },
+       It will automatically appear on the home page, the archive,
+       its own page, and any matching tag pages — newest first.
+
+       HOW TO EDIT SITE INFO (name, bio, Instagram, email)
+       Edit the SITE object just below the ESSAYS array.
+       ============================================================ */
+
+    const ESSAYS = [
+      {
+        slug: "on-starting-somewhere-new",
+        title: "On Starting Somewhere New",
+        date: "2026-07-14",
+        tags: ["beginnings", "writing"],
+        excerpt: "There's a discipline to writing in small rectangles. You learn to cut. Some thoughts, though, don't want to be sanded down.",
+        content: [
+          "For a while now, most of what I've written has lived in small rectangles — a caption stretched as far as it could go before it started to feel like it was overstaying its welcome. There's a discipline to that kind of writing. You learn to cut. You learn what a thought looks like once you've sanded off everything but its edges.",
+          "But some thoughts don't want to be sanded down. They want room to turn around in, to contradict themselves a little, to trail off and come back. I kept finding myself writing past the caption, past the character count, into paragraphs that had nowhere to go.",
+          "So this is where they go now. Nothing here is timed to an algorithm or scheduled for whenever the feed decides is best. It will just be here, in order, the way a shelf of notebooks is here — not urgent, just kept.",
+          "I don't know yet what this space will become. I know it will be slower than the last one. That feels like the point."
+        ]
+      },
+      {
+        slug: "what-doesnt-make-the-grid",
+        title: "What Doesn't Make the Grid",
+        date: "2026-06-28",
+        tags: ["attention", "everyday-life"],
+        excerpt: "The five minutes between finishing a task and starting the next one. The view from a bus window that isn't a sunset.",
+        content: [
+          "There's a particular kind of moment that never makes it anywhere. Not bad enough to complain about, not good enough for a photo. The five minutes between finishing a task and starting the next one, where you just stand in the kitchen for no reason. The view from a bus window that isn't a sunset, just a street you've seen a hundred times, looking slightly different in this particular light.",
+          "I used to think these moments were empty — the connective tissue between the parts of the day worth keeping. Lately I think it's the opposite. The photographed parts are the connective tissue. These other moments, the ungridded ones, are where I actually am most of the time.",
+          "I don't have a tidy conclusion about this, which feels appropriate, since the whole point of these moments is that they resist being tidied into anything. I just wanted to write one down before it joined the rest, unrecorded. Consider this me pointing at the bus window. At the kitchen, at 4pm, at nothing in particular."
+        ]
+      },
+      {
+        slug: "a-small-repeated-thing",
+        title: "A Small, Repeated Thing",
+        date: "2026-06-02",
+        tags: ["ritual", "mornings"],
+        excerpt: "Every morning I fill the same pot, wait by the same window, for the same three minutes. Nothing happens. Water gets hot.",
+        content: [
+          "Every morning I fill the same pot, wait by the same window, for the same three minutes. It is, by any objective measure, not interesting. Nothing happens. Water gets hot.",
+          "And yet I've started to think it's one of the more honest parts of my day, precisely because nothing is asked of it. It doesn't need to be good. It doesn't need an angle. It's just a thing I do again, the way I did it yesterday, the way I'll do it tomorrow — mostly the same, occasionally not. A cracked mug. A different light. A thought I didn't have before.",
+          "I think we underrate repetition as a place to notice things. You can't compare a new experience to anything; it just arrives all at once, undifferentiated. But a repeated one gives you a baseline. Against it, even small differences stand out sharply. The three minutes by the window aren't empty. They're where I keep finding out what today is, specifically, instead of just generally."
+        ]
+      },
+      {
+        slug: "on-keeping-things",
+        title: "On Keeping Things",
+        date: "2026-05-11",
+        tags: ["memory", "objects"],
+        excerpt: "A ticket stub. A key that doesn't open anything I own anymore. None of it is valuable. I don't get rid of it either.",
+        content: [
+          "I have a drawer I don't open very often, mostly because I already know what's in it. A ticket stub from a film I don't remember the plot of. A key that doesn't open anything I currently own. A note in handwriting I recognize but can't quite place the moment of.",
+          "None of it is valuable. If the house were burning down, I don't think I'd grab the drawer. But I don't get rid of it either, and I've started to think that's its own kind of use — not sentimental exactly, more like ballast. Evidence that the person keeping this drawer today is continuous with the person who kept the ticket stub, years ago, for reasons that have since evaporated.",
+          "I don't need to remember why I kept the key. I just need to know that I did. That's enough to be going on with."
+        ]
+      }
+    ];
+
+    const SITE = {
+      title: "Longhand",
+      tagline: "Essays & reflections, written slower.",
+      author: "Your Name",
+      authorInitials: "YN",
+      instagramUrl: "https://instagram.com/yourhandle",
+      email: "hello@example.com",
+      bio: [
+        "I've been writing in some form for years, mostly in places built to be scrolled past. This is an attempt to slow that down.",
+        "Most of what ends up here started as a caption that got too long, or a note to myself I didn't want to lose. [Edit this paragraph to say what you actually write about.]",
+        "If you'd like new essays sent to you, the list below is the easiest way in — no algorithm deciding whether you see it. You can also still find me on Instagram, where this all started."
+      ]
+    };
+
+    const essaysSorted = [...ESSAYS].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    function formatDate(dateStr) {
+      const d = new Date(dateStr + 'T00:00:00');
+      const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+    }
+
+    function readingTime(text) {
+      const words = text.trim().split(/\s+/).length;
+      return Math.max(1, Math.round(words / 200));
+    }
+
+    function renderHeader(active) {
+      return `
+        <header class="site-header">
+          <div class="wrap header-inner">
+            <a href="#/" class="site-mark">${SITE.title}</a>
+            <nav class="nav-links">
+              <a href="#/essays" class="${active === 'essays' ? 'active' : ''}">Essays</a>
+              <a href="#/about" class="${active === 'about' ? 'active' : ''}">About</a>
+              <a href="${SITE.instagramUrl}" target="_blank" rel="noopener">Instagram ↗</a>
+              <a href="#subscribe" class="nav-cta">Subscribe</a>
+            </nav>
+          </div>
+        </header>
+      `;
+    }
+
+    function renderFooter() {
+      return `
+        <footer class="site-footer">
+          <div class="wrap footer-inner">
+            <div class="footer-col">
+              <div class="site-mark">${SITE.title}</div>
+              <p class="footer-tagline">${SITE.tagline}</p>
+              <p class="footer-copy">© ${new Date().getFullYear()} ${SITE.author}</p>
+            </div>
+            <div class="footer-col" id="subscribe">
+              <p class="section-label">Get new essays by email</p>
+              <!-- NEWSLETTER FORM: front-end only. Connect to Buttondown / ConvertKit / Mailchimp to actually collect emails. -->
+              <form id="newsletter-form" class="newsletter-form">
+                <input type="email" required placeholder="you@example.com" aria-label="Email address" />
+                <button type="submit">Subscribe</button>
+              </form>
+              <p class="form-msg" aria-live="polite"></p>
+              <a href="${SITE.instagramUrl}" target="_blank" rel="noopener" class="footer-ig">Also on Instagram ↗</a>
+            </div>
+          </div>
+        </footer>
+      `;
+    }
+
+    function entryHTML(essay) {
+      return `
+        <article class="entry">
+          <a href="#/essay/${essay.slug}" class="entry-link">
+            <time class="entry-date">${formatDate(essay.date)}</time>
+            <h3 class="entry-title">${essay.title}</h3>
+            <p class="entry-excerpt">${essay.excerpt}</p>
+            <p class="entry-meta">${readingTime(essay.content.join(' '))} min read · ${essay.tags.join(' · ')}</p>
+          </a>
+        </article>
+      `;
+    }
+
+    function renderHome() {
+      const recent = essaysSorted.slice(0, 3);
+      return `
+        ${renderHeader('home')}
+        <main id="main">
+          <section class="wrap hero">
+            <p class="eyebrow">Essays &amp; reflections</p>
+            <h1 class="hero-title">Some thoughts need more than a caption.</h1>
+            <p class="hero-sub">This is where the longer version lives — personal essays, written slower and kept somewhere that isn't a feed.</p>
+            <a href="#subscribe" class="hero-cta">Get new essays by email →</a>
+          </section>
+          <section class="wrap">
+            <p class="section-label">Recent entries</p>
+            <div class="entry-list">
+              ${recent.map(entryHTML).join('')}
+            </div>
+            <a href="#/essays" class="see-all">See all essays →</a>
+          </section>
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function renderArchive() {
+      const byYear = {};
+      essaysSorted.forEach(e => {
+        const y = e.date.slice(0, 4);
+        (byYear[y] = byYear[y] || []).push(e);
+      });
+      const years = Object.keys(byYear).sort((a, b) => b - a);
+      return `
+        ${renderHeader('essays')}
+        <main id="main">
+          <section class="wrap page-head">
+            <p class="section-label">The archive</p>
+            <h1 class="page-title">All essays</h1>
+          </section>
+          ${years.map(y => `
+            <section class="wrap">
+              <p class="year-label">${y}</p>
+              <div class="entry-list">${byYear[y].map(entryHTML).join('')}</div>
+            </section>
+          `).join('')}
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function renderTagView(tag) {
+      const filtered = essaysSorted.filter(e => e.tags.includes(tag));
+      return `
+        ${renderHeader('essays')}
+        <main id="main">
+          <section class="wrap page-head">
+            <p class="section-label">Tagged</p>
+            <h1 class="page-title">${tag}</h1>
+          </section>
+          <section class="wrap">
+            <div class="entry-list">
+              ${filtered.length ? filtered.map(entryHTML).join('') : '<p class="empty-msg">No essays with this tag yet.</p>'}
+            </div>
+          </section>
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function renderEssayView(slug) {
+      const idx = essaysSorted.findIndex(e => e.slug === slug);
+      if (idx === -1) return render404();
+      const essay = essaysSorted[idx];
+      const prev = essaysSorted[idx + 1];
+      const next = essaysSorted[idx - 1];
+      const prevHTML = prev ? `<a href="#/essay/${prev.slug}" class="pag-link prev"><span>← Previous</span>${prev.title}</a>` : '<span></span>';
+      const nextHTML = next ? `<a href="#/essay/${next.slug}" class="pag-link next"><span>Next →</span>${next.title}</a>` : '';
+      return `
+        ${renderHeader('essays')}
+        <main id="main">
+          <article class="essay-wrap">
+            <a href="#/essays" class="back-link">← All essays</a>
+            <p class="essay-meta">${formatDate(essay.date)} · ${readingTime(essay.content.join(' '))} min read</p>
+            <h1 class="essay-title">${essay.title}</h1>
+            <p class="essay-tags">${essay.tags.map(t => `<a href="#/tag/${encodeURIComponent(t)}">${t}</a>`).join(' · ')}</p>
+            <div class="essay-body">${essay.content.map(p => `<p>${p}</p>`).join('')}</div>
+            <hr class="essay-end" />
+            <div class="essay-actions"><button class="copy-link-btn" type="button">Copy link</button></div>
+            <nav class="essay-pagination">${prevHTML}${nextHTML}</nav>
+          </article>
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function renderAbout() {
+      return `
+        ${renderHeader('about')}
+        <main id="main">
+          <section class="wrap about-wrap">
+            <div class="monogram">${SITE.authorInitials}</div>
+            <h1 class="page-title">About</h1>
+            <div class="about-body">
+              <p>Hi, I'm ${SITE.author}.</p>
+              ${SITE.bio.map(p => `<p>${p}</p>`).join('')}
+            </div>
+            <div class="about-links">
+              <a href="${SITE.instagramUrl}" target="_blank" rel="noopener">Instagram ↗</a>
+              <a href="mailto:${SITE.email}">Email ↗</a>
+            </div>
+          </section>
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function render404() {
+      return `
+        ${renderHeader('')}
+        <main id="main">
+          <section class="wrap page-head">
+            <p class="section-label">Not found</p>
+            <h1 class="page-title">That entry doesn't exist (yet).</h1>
+            <p style="margin-top:1.2rem;"><a href="#/essays" class="see-all">← Back to all essays</a></p>
+          </section>
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function router() {
+      let hash = window.location.hash || '#/';
+      if (hash === '#') hash = '#/';
+
+      if (hash === '#subscribe') {
+        const el = document.getElementById('subscribe');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      const app = document.getElementById('app');
+      let html;
+      if (hash === '#/') html = renderHome();
+      else if (hash === '#/essays') html = renderArchive();
+      else if (hash === '#/about') html = renderAbout();
+      else if (hash.indexOf('#/essay/') === 0) html = renderEssayView(decodeURIComponent(hash.slice(8)));
+      else if (hash.indexOf('#/tag/') === 0) html = renderTagView(decodeURIComponent(hash.slice(6)));
+      else html = render404();
+
+      app.innerHTML = html;
+      window.scrollTo(0, 0);
+    }
+
+    document.addEventListener('submit', function (e) {
+      if (e.target && e.target.id === 'newsletter-form') {
+        e.preventDefault();
+        const form = e.target;
+        const input = form.querySelector('input[type=email]');
+        const msg = form.querySelector('.form-msg');
+        if (input && input.value && input.value.includes('@')) {
+          msg.textContent = "Thanks — you're on the list.";
+          form.reset();
+        }
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest('.copy-link-btn');
+      if (btn) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          const original = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => { btn.textContent = original; }, 1500);
+        }).catch(() => {});
+      }
+    });
+
+    window.addEventListener('hashchange', router);
+    window.addEventListener('DOMContentLoaded', router);
+  </script>
+</body>
+</html>
