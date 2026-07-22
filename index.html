@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>thebearwithdementia 
-<meta name="description" content="the overthinker in me stayed past bedtime." />
+<title>Longhand — essays &amp; reflections</title>
+<meta name="description" content="Personal essays and reflections — the longer version of thoughts that don't fit in a caption." />
 <meta name="theme-color" content="#FAFAFA" />
-<meta property="og:title" content="thebearwithdementia" />
-<meta property="og:description" content="the overthinker in me stayed past bedtime." />
+<meta property="og:title" content="Longhand — essays & reflections" />
+<meta property="og:description" content="Personal essays and reflections, written slower than a caption allows." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2316181B'/%3E%3Ccircle cx='50' cy='50' r='11' fill='%23FAFAFA'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -238,14 +238,16 @@
 
     const ESSAYS = [
       {
-        slug: "the-doctor-and-the-saint",
-        title: "The Doctor and The Saint",
-        date: "2024-04-13",
-        tags: ["book review"],
-        excerpt: "",
+        slug: "on-starting-somewhere-new",
+        title: "On Starting Somewhere New",
+        date: "2026-07-14",
+        tags: ["beginnings", "writing"],
+        excerpt: "There's a discipline to writing in small rectangles. You learn to cut. Some thoughts, though, don't want to be sanded down.",
         content: [
-          "When Ambedkar was asked about his opinion regarding religion his reply made many rational thinkers question themselves. The world in itself is imperfect and to live in it people have to bear with these imperfections. The ideology and propaganda followed by many religions are still not social friendly. When questioned on why he supported the Depressed class movement for their right to entry into temples, he stated that he never wanted them to be worshippers of idols. Instead, he wanted them to be conscious of their worth and their stand in the government. Hence, he supported them since they have been overhauled by superior castes for a long treacherous time",
-          "Politics is never black and white.It's a spectrum. There are different levels to be searched for. Same with reading political non-fiction literature. The author's spectrum will always be different from the readers' prejudiced system. How we interpret, and the way we interpret is what drives the output of their work. Which is also why I haven't written any review as of now for Arundathi Roy's The Doctor and the Saint. The book is intense-with politics, policies, parliamentary debates and so on it continues. From what I have read in addition to the book regarding the Ambedkar-Gandhi debate, I personally feel Ambedkar is being cut off from the limelight. His policies and thoughts have been miscommunicated and misinterpreted. There is more to their debate than just quoting their individual opinions on the caste system and reservation. This topic is and always will be sensitive."
+          "For a while now, most of what I've written has lived in small rectangles — a caption stretched as far as it could go before it started to feel like it was overstaying its welcome. There's a discipline to that kind of writing. You learn to cut. You learn what a thought looks like once you've sanded off everything but its edges.",
+          "But some thoughts don't want to be sanded down. They want room to turn around in, to contradict themselves a little, to trail off and come back. I kept finding myself writing past the caption, past the character count, into paragraphs that had nowhere to go.",
+          "So this is where they go now. Nothing here is timed to an algorithm or scheduled for whenever the feed decides is best. It will just be here, in order, the way a shelf of notebooks is here — not urgent, just kept.",
+          "I don't know yet what this space will become. I know it will be slower than the last one. That feels like the point."
         ]
       },
       {
@@ -286,7 +288,7 @@
       }
     ];
 
-   const SITE = {
+const SITE = {
   title: "thebearwithdementia",
 
   tagline: "this was an impulsive decision.",
@@ -302,16 +304,21 @@
   heroTitle: "this was an impulsive decision.",
 
   heroText:
-    `you can find the rantings of a desperate, broke, dumb human being navigating through "i-didn't-sign-up-for-this-shit.",
+    `you can find the rantings of a desperate, broke, dumb human being navigating through "i-didn't-sign-up-for-this-shit."
+
+sometimes i write essays.
+sometimes i spiral.
+sometimes i obsess over films and books.`,
 
   bio: [
     "hey hi, i'm sethu.",
     "i write on instagram. most of the time i'm bored. the algorithm is effed up.",
+    "this website exists because i wanted a place where nothing disappears into a feed.",
     "i love horlicks.",
-    "i fw mambazha pulissery and chakkakuru varuthath"
+    "i fw mambazha pulissery.",
+    "chakkakuru varuthath deserves more love."
   ]
 };
-
     const essaysSorted = [...ESSAYS].sort((a, b) => new Date(b.date) - new Date(a.date));
 
     function formatDate(dateStr) {
@@ -336,7 +343,7 @@
   <a href="#/films">Films</a>
   <a href="#/books">Bookshelf</a>
   <a href="#/about">About</a>
-  <a href="https://instagram.com/thebearwithdementia" target="_blank">
+  <a href="${SITE.instagramUrl}" target="_blank" rel="noopener">
     Instagram ↗
   </a>
 </nav>
@@ -387,18 +394,16 @@
       return `
         ${renderHeader('home')}
         <main id="main">
-         <section class="wrap hero">
+          <section class="wrap hero">
+  <p class="eyebrow">welcome.</p>
 
-           <p class="eyebrow">welcome.</p>
+  <h1 class="hero-title">
+    ${SITE.heroTitle}
+  </h1>
 
-           <h1 class="hero-title">
-            ${SITE.heroTitle}
-           </h1>
-
-          <p class="hero-sub">
-          ${SITE.heroText}
-          </p>
-
+  <p class="hero-sub">
+    ${SITE.heroText}
+  </p>
 </section>
           <section class="wrap">
             <p class="section-label">Recent entries</p>
@@ -569,3 +574,4 @@
   </script>
 </body>
 </html>
+
