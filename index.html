@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Longhand — essays &amp; reflections</title>
-<meta name="description" content="Personal essays and reflections — the longer version of thoughts that don't fit in a caption." />
+<title>thebearwithdementia &amp; 
+<meta name="description" content="the overthinker in me stayed past bedtime." />
 <meta name="theme-color" content="#FAFAFA" />
-<meta property="og:title" content="Longhand — essays & reflections" />
-<meta property="og:description" content="Personal essays and reflections, written slower than a caption allows." />
+<meta property="og:title" content="thebearwithdementia" />
+<meta property="og:description" content="the overthinker in me stayed past bedtime." />
 <meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2316181B'/%3E%3Ccircle cx='50' cy='50' r='11' fill='%23FAFAFA'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -286,19 +286,31 @@
       }
     ];
 
-    const SITE = {
-      title: "thebearwithdementia",
-      tagline: "thoughts, 3 am crisis, surviving.",
-      author: "sethu",
-      authorInitials: "",
-      instagramUrl: "https://instagram.com/yourhandle",
-      email: "sethulakshmismitha@gmail.com",
-      bio: [
-        "I've been writing in some form for years, mostly in places built to be scrolled past. This is an attempt to slow that down.",
-        "Most of what ends up here started as a caption that got too long, or a note to myself I didn't want to lose. [Edit this paragraph to say what you actually write about.]",
-        "If you'd like new essays sent to you, the list below is the easiest way in — no algorithm deciding whether you see it. You can also still find me on Instagram, where this all started."
-      ]
-    };
+   const SITE = {
+  title: "thebearwithdementia",
+
+  tagline: "this was an impulsive decision.",
+
+  author: "Sethu",
+
+  authorInitials: "S",
+
+  instagramUrl: "https://instagram.com/thebearwithdementia",
+
+  email: "",
+
+  heroTitle: "this was an impulsive decision.",
+
+  heroText:
+    `you can find the rantings of a desperate, broke, dumb human being navigating through "i-didn't-sign-up-for-this-shit.",
+
+  bio: [
+    "hey hi, i'm sethu.",
+    "i write on instagram. most of the time i'm bored. the algorithm is effed up.",
+    "i love horlicks.",
+    "i fw mambazha pulissery and chakkakuru varuthath"
+  ]
+};
 
     const essaysSorted = [...ESSAYS].sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -319,11 +331,15 @@
           <div class="wrap header-inner">
             <a href="#/" class="site-mark">${SITE.title}</a>
             <nav class="nav-links">
-              <a href="#/essays" class="${active === 'essays' ? 'active' : ''}">Essays</a>
-              <a href="#/about" class="${active === 'about' ? 'active' : ''}">About</a>
-              <a href="${SITE.instagramUrl}" target="_blank" rel="noopener">Instagram ↗</a>
-              <a href="#subscribe" class="nav-cta">Subscribe</a>
-            </nav>
+  <a href="#/">Home</a>
+  <a href="#/thoughts">Thoughts</a>
+  <a href="#/films">Films</a>
+  <a href="#/books">Bookshelf</a>
+  <a href="#/about">About</a>
+  <a href="https://instagram.com/thebearwithdementia" target="_blank">
+    Instagram ↗
+  </a>
+</nav>
           </div>
         </header>
       `;
@@ -371,12 +387,21 @@
       return `
         ${renderHeader('home')}
         <main id="main">
-          <section class="wrap hero">
-            <p class="eyebrow">Essays &amp; reflections</p>
-            <h1 class="hero-title">Some thoughts need more than a caption.</h1>
-            <p class="hero-sub">This is where the longer version lives — personal essays, written slower and kept somewhere that isn't a feed.</p>
-            <a href="#subscribe" class="hero-cta">Get new essays by email →</a>
-          </section>
+         <section class="wrap hero">
+
+<p class="eyebrow">
+welcome.
+</p>
+
+<h1 class="hero-title">
+${SITE.heroTitle}
+</h1>
+
+<p class="hero-sub">
+${SITE.heroText}
+</p>
+
+</section>
           <section class="wrap">
             <p class="section-label">Recent entries</p>
             <div class="entry-list">
