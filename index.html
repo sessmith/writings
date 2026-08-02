@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Longhand — essays, thoughts, films &amp; books</title>
+<meta name="description" content="Personal essays, running thoughts, and notes on films and books — the longer version of things that don't fit in a caption." />
+<meta name="theme-color" content="#FAFAFA" />
+<meta property="og:title" content="Longhand — essays, thoughts, films & books" />
+<meta property="og:description" content="Personal essays, running thoughts, and notes on films and books, written slower than a caption allows." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2316181B'/%3E%3Ccircle cx='50' cy='50' r='11' fill='%23FAFAFA'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAFAFA;
+    --paper-raised: #F2F1EE;
+    --ink: #16181B;
+    --ink-soft: #5C5F64;
+    --ink-faint: #9C9EA1;
+    --accent: #24443A;
+    --accent-bright: #2F5D4E;
+    --border: #E6E5E2;
+    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --max-w: 720px;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+
+  .skip-link {
+    position: absolute; left: -999px; top: 0; background: var(--accent); color: #fff;
+    padding: .7rem 1.1rem; z-index: 100; font-family: var(--font-display); font-size: .85rem;
+    border-radius: 0 0 6px 0;
+  }
+  .skip-link:focus { left: 0; top: 0; }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 3px;
+  }
+
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0;
+    background: rgba(250,250,250,.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 10;
+  }
+  .header-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: .75rem;
+    padding-top: 1.15rem; padding-bottom: 1.15rem;
+  }
+  .site-mark { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; letter-spacing: -.01em; }
+  .nav-links { display: flex; align-items: center; gap: 1.4rem; font-family: var(--font-display); font-size: .85rem; flex-wrap: wrap; }
+  .nav-links a { color: var(--ink-soft); transition: color .15s ease; white-space: nowrap; }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+  .nav-links a.nav-cta { color: var(--accent); font-weight: 600; }
+  .nav-links a.nav-cta:hover { color: var(--accent-bright); }
+
+  .hero { padding-top: 4.5rem; padding-bottom: 3rem; }
+  .eyebrow {
+    font-family: var(--font-display); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 1rem;
+  }
+  .hero-title {
+    font-family: var(--font-serif); font-weight: 500; font-size: clamp(2rem, 4vw + 1rem, 3.2rem);
+    line-height: 1.18; max-width: 16ch; margin: 0 0 1.1rem;
+    animation: fadeUp .6s ease both;
+  }
+  .hero-sub {
+    font-family: var(--font-serif); font-size: 1.05rem; color: var(--ink-soft); max-width: 48ch;
+    line-height: 1.65; margin: 0 0 1.5rem;
+    animation: fadeUp .6s ease .08s both;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: .4rem; font-family: var(--font-display);
+    font-size: .88rem; font-weight: 500; color: var(--accent); border-bottom: 1px solid var(--accent);
+    padding-bottom: 2px; animation: fadeUp .6s ease .16s both;
+  }
+  .hero-cta:hover { color: var(--accent-bright); border-color: var(--accent-bright); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title, .hero-sub, .hero-cta { animation: none; }
+  }
+
+  .section-label {
+    font-family: var(--font-display); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-faint); margin: 0 0 .5rem;
+  }
+  .entry-list { margin-top: 1rem; }
+  .entry { border-bottom: 1px solid var(--border); }
+  .entry:first-child { border-top: 1px solid var(--border); }
+  .entry-link { display: block; padding: 1.9rem 0; }
+  .entry-link.has-image { display: flex; gap: 1.2rem; align-items: flex-start; }
+  .entry-thumb {
+    width: 92px; height: 92px; flex-shrink: 0; border-radius: 6px; overflow: hidden;
+    background: var(--paper-raised);
+  }
+  .entry-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .entry-body-col { flex: 1; min-width: 0; }
+  .entry-kind {
+    display: block; font-family: var(--font-display); font-size: .72rem; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: .5rem;
+  }
+  .entry-date {
+    font-family: var(--font-display); font-size: .8rem; color: var(--ink-faint);
+    display: block; margin-bottom: .5rem;
+  }
+  .entry--thought .entry-date { margin-bottom: .7rem; }
+  .entry-title {
+    font-family: var(--font-serif); font-weight: 500; font-size: 1.5rem; margin: 0 0 .5rem;
+    transition: color .15s ease;
+  }
+  .entry:hover .entry-title { color: var(--accent); }
+  .entry-excerpt {
+    font-family: var(--font-serif); color: var(--ink-soft); line-height: 1.6; margin: 0 0 .6rem; max-width: 60ch;
+  }
+  .thought-text {
+    font-family: var(--font-serif); font-style: italic; font-size: 1.25rem; line-height: 1.55;
+    color: var(--ink); margin: 0 0 .6rem; max-width: 56ch; transition: color .15s ease;
+  }
+  .entry:hover .thought-text { color: var(--accent); }
+  .entry-meta { font-family: var(--font-display); font-size: .76rem; color: var(--ink-faint); margin: 0; }
+  .rating { color: var(--accent); letter-spacing: 1px; }
+  .rating-line { font-family: var(--font-display); color: var(--accent); letter-spacing: 1px; margin: 0 0 .6rem; font-size: 1rem; }
+  .see-all {
+    display: inline-block; margin-top: 1.8rem; font-family: var(--font-display); font-size: .85rem;
+    color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 2px;
+  }
+  .see-all:hover { border-color: var(--accent); }
+  .empty-msg { color: var(--ink-soft); font-style: italic; font-family: var(--font-serif); }
+
+  .page-head { padding-top: 3.5rem; padding-bottom: .5rem; }
+  .page-title { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 3vw + 1rem, 2.4rem); margin: 0; }
+  .year-label { font-family: var(--font-display); font-size: .85rem; color: var(--ink-faint); margin: 2.2rem 0 0; }
+
+  .explore-section { padding-bottom: 3rem; }
+  .explore-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--border); border: 1px solid var(--border); margin-top: 1rem;
+  }
+  .explore-card {
+    background: var(--paper); padding: 1.6rem; display: flex; flex-direction: column; gap: .35rem;
+    transition: background .15s ease;
+  }
+  .explore-card:hover { background: var(--paper-raised); }
+  .explore-title { font-family: var(--font-serif); font-weight: 500; font-size: 1.25rem; color: var(--ink); }
+  .explore-tagline { font-family: var(--font-serif); color: var(--ink-soft); font-size: .92rem; line-height: 1.5; }
+  .explore-arrow { font-family: var(--font-display); color: var(--accent); font-size: .82rem; margin-top: .3rem; }
+
+  .essay-wrap { max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+  .back-link { font-family: var(--font-display); font-size: .82rem; color: var(--ink-soft); margin-bottom: 2rem; display: inline-block; }
+  .back-link:hover { color: var(--accent); }
+  .essay-meta { font-family: var(--font-display); font-size: .82rem; color: var(--ink-faint); margin: 0 0 .8rem; }
+  .essay-title {
+    font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.9rem, 3.4vw + 1rem, 2.7rem);
+    line-height: 1.2; margin: 0 0 .8rem;
+  }
+  .essay-tags { font-family: var(--font-display); font-size: .78rem; color: var(--ink-faint); margin: 0 0 2.4rem; }
+  .essay-tags a:hover { color: var(--accent); }
+  .hero-image {
+    width: 100%; max-height: 70vh; object-fit: cover; border-radius: 8px;
+    margin: 0 0 2rem; display: block;
+  }
+  .essay-body { font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.8; color: var(--ink); }
+  .essay-body p { margin: 0 0 1.4rem; }
+  .essay-end { width: 32px; height: 2px; background: var(--accent); margin: 3rem auto; border: none; }
+  .essay-actions { display: flex; justify-content: center; margin-bottom: 3rem; }
+  .copy-link-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--ink-soft);
+    font-family: var(--font-display); font-size: .8rem; padding: .55rem 1.1rem; border-radius: 6px;
+    cursor: pointer; transition: all .15s ease;
+  }
+  .copy-link-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .essay-pagination { display: flex; justify-content: space-between; gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+  .pag-link { display: flex; flex-direction: column; gap: .35rem; font-family: var(--font-serif); font-size: 1.05rem; max-width: 47%; transition: color .15s ease; }
+  .pag-link span { font-family: var(--font-display); font-size: .72rem; color: var(--ink-faint); }
+  .pag-link.next { text-align: right; margin-left: auto; }
+  .pag-link:hover { color: var(--accent); }
+
+  .about-wrap { padding-top: 3.5rem; padding-bottom: 4rem; }
+  .monogram {
+    width: 84px; height: 84px; border-radius: 50%; border: 1px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; margin-bottom: 1.6rem;
+  }
+  .about-body { font-family: var(--font-serif); font-size: 1.08rem; line-height: 1.75; max-width: 60ch; margin: 1.3rem 0 2rem; }
+  .about-body p { margin: 0 0 1.2rem; }
+  .about-links { display: flex; gap: 1.6rem; font-family: var(--font-display); font-size: .85rem; }
+  .about-links a { color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 2px; }
+  .about-links a:hover { border-color: var(--accent); }
+
+  .site-footer { border-top: 1px solid var(--border); margin-top: 2rem; padding: 3rem 0; background: var(--paper-raised); }
+  .footer-inner { display: flex; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap; }
+  .footer-col { flex: 1 1 220px; }
+  .footer-tagline { color: var(--ink-soft); font-size: .92rem; margin: .5rem 0; font-family: var(--font-serif); }
+  .footer-nav { display: flex; flex-wrap: wrap; gap: 1rem; margin: .9rem 0; font-family: var(--font-display); font-size: .82rem; }
+  .footer-nav a { color: var(--ink-soft); }
+  .footer-nav a:hover { color: var(--accent); }
+  .footer-copy { color: var(--ink-faint); font-size: .78rem; font-family: var(--font-display); margin: 0; }
+  .newsletter-form { display: flex; gap: .5rem; max-width: 320px; margin-top: .6rem; }
+  .newsletter-form input {
+    flex: 1; min-width: 0; background: var(--paper); border: 1px solid var(--border); color: var(--ink);
+    padding: .6rem .8rem; font-family: var(--font-display); font-size: .85rem; border-radius: 6px;
+  }
+  .newsletter-form input::placeholder { color: var(--ink-faint); }
+  .newsletter-form input:focus { outline: none; border-color: var(--accent); }
+  .newsletter-form button {
+    background: var(--accent); color: #fff; border: none; padding: .6rem 1.1rem;
+    font-family: var(--font-display); font-size: .82rem; font-weight: 500; cursor: pointer;
+    border-radius: 6px; transition: background .15s ease; white-space: nowrap;
+  }
+  .newsletter-form button:hover { background: var(--accent-bright); }
+  .form-msg { font-family: var(--font-display); font-size: .8rem; color: var(--accent); min-height: 1.2em; margin: .6rem 0 1rem; }
+  .footer-ig { display: inline-block; margin-top: .3rem; font-family: var(--font-display); font-size: .85rem; color: var(--ink-soft); }
+  .footer-ig:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 0 1.25rem; }
+    .hero { padding-top: 3rem; padding-bottom: 2rem; }
+    .footer-inner { flex-direction: column; gap: 2rem; }
+    .essay-pagination { flex-direction: column; }
+    .pag-link.next { text-align: left; margin-left: 0; }
+    .pag-link { max-width: 100%; }
+    .newsletter-form { max-width: 100%; }
+    .explore-grid { grid-template-columns: 1fr; }
+    .entry-thumb { width: 72px; height: 72px; }
+    .hero-image { max-height: 50vh; }
+  }
+</style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <div id="app"></div>
+
+  <script>
+    /* ============================================================
+       HOW THIS SITE IS ORGANIZED
+
+       There are four content arrays below — ESSAYS, THOUGHTS,
+       FILMS, and BOOKSHELF. Add an entry to any of them and it
+       automatically shows up on the homepage, that section's own
+       page, its own permalink page, and any matching tag pages.
+
+       ESSAYS — long-form personal essays
+         { slug, title, date, tags, excerpt, content: [...], image, imageAlt }
+
+       THOUGHTS — short, untitled notes (closer to a caption)
+         { slug, date, tags, content: [...], image, imageAlt }
+
+       FILMS — notes on films you've watched
+         { slug, title, director, year, date, rating (1-5, optional),
+           tags, excerpt, content: [...], image, imageAlt }
+
+       BOOKSHELF — notes on books you're reading or have read
+         { slug, title, author, status ("reading" or "finished"),
+           date, rating (1-5, optional), tags, excerpt, content: [...],
+           image, imageAlt }
+
+       Notes:
+       - date is always "YYYY-MM-DD" and controls sort order (newest first)
+       - slug just needs to be unique within its own array — lowercase,
+         dashes, no spaces
+       - use double quotes ("like this") around text, not single quotes,
+         so contractions like don't / it's / I've don't break anything.
+         If you need a literal quote mark inside text, write it as \"
+       - any field marked optional can just be left out entirely
+       - image is optional on every entry — a path or URL to a photo,
+         e.g. "images/my-photo.jpg". Leave it out and the entry just
+         shows as text, same as before. imageAlt is a one-line description
+         of the photo for screen readers; if left out, the title (or the
+         word "Photo" for thoughts) is used instead.
+
+       Edit the SITE object further down for your name, bio,
+       Instagram link, and email.
+       ============================================================ */
+
+    const ESSAYS = [
+      {
+        slug: "on-starting-somewhere-new",
+        title: "On Starting Somewhere New",
+        date: "2026-07-14",
+        tags: ["beginnings", "writing"],
+        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23F2F1EE'/%3E%3Ccircle cx='200' cy='220' r='58' fill='%23E6E5E2'/%3E%3Crect x='130' y='330' width='140' height='6' rx='3' fill='%2324443A'/%3E%3Crect x='130' y='352' width='90' height='6' rx='3' fill='%239C9EA1'/%3E%3C/svg%3E",
+        imageAlt: "Placeholder image — swap this for one of your own photos",
+        excerpt: "There's a discipline to writing in small rectangles. You learn to cut. Some thoughts, though, don't want to be sanded down.",
+        content: [
+          "For a while now, most of what I've written has lived in small rectangles — a caption stretched as far as it could go before it started to feel like it was overstaying its welcome. There's a discipline to that kind of writing. You learn to cut. You learn what a thought looks like once you've sanded off everything but its edges.",
+          "But some thoughts don't want to be sanded down. They want room to turn around in, to contradict themselves a little, to trail off and come back. I kept finding myself writing past the caption, past the character count, into paragraphs that had nowhere to go.",
+          "So this is where they go now. Nothing here is timed to an algorithm or scheduled for whenever the feed decides is best. It will just be here, in order, the way a shelf of notebooks is here — not urgent, just kept.",
+          "I don't know yet what this space will become. I know it will be slower than the last one. That feels like the point."
+        ]
+      },
+      {
+        slug: "what-doesnt-make-the-grid",
+        title: "What Doesn't Make the Grid",
+        date: "2026-06-28",
+        tags: ["attention", "everyday-life"],
+        excerpt: "The five minutes between finishing a task and starting the next one. The view from a bus window that isn't a sunset.",
+        content: [
+          "There's a particular kind of moment that never makes it anywhere. Not bad enough to complain about, not good enough for a photo. The five minutes between finishing a task and starting the next one, where you just stand in the kitchen for no reason. The view from a bus window that isn't a sunset, just a street you've seen a hundred times, looking slightly different in this particular light.",
+          "I used to think these moments were empty — the connective tissue between the parts of the day worth keeping. Lately I think it's the opposite. The photographed parts are the connective tissue. These other moments, the ungridded ones, are where I actually am most of the time.",
+          "I don't have a tidy conclusion about this, which feels appropriate, since the whole point of these moments is that they resist being tidied into anything. I just wanted to write one down before it joined the rest, unrecorded. Consider this me pointing at the bus window. At the kitchen, at 4pm, at nothing in particular."
+        ]
+      },
+      {
+        slug: "a-small-repeated-thing",
+        title: "A Small, Repeated Thing",
+        date: "2026-06-02",
+        tags: ["ritual", "mornings"],
+        excerpt: "Every morning I fill the same pot, wait by the same window, for the same three minutes. Nothing happens. Water gets hot.",
+        content: [
+          "Every morning I fill the same pot, wait by the same window, for the same three minutes. It is, by any objective measure, not interesting. Nothing happens. Water gets hot.",
+          "And yet I've started to think it's one of the more honest parts of my day, precisely because nothing is asked of it. It doesn't need to be good. It doesn't need an angle. It's just a thing I do again, the way I did it yesterday, the way I'll do it tomorrow — mostly the same, occasionally not. A cracked mug. A different light. A thought I didn't have before.",
+          "I think we underrate repetition as a place to notice things. You can't compare a new experience to anything; it just arrives all at once, undifferentiated. But a repeated one gives you a baseline. Against it, even small differences stand out sharply. The three minutes by the window aren't empty. They're where I keep finding out what today is, specifically, instead of just generally."
+        ]
+      },
+      {
+        slug: "on-keeping-things",
+        title: "On Keeping Things",
+        date: "2026-05-11",
+        tags: ["memory", "objects"],
+        excerpt: "A ticket stub. A key that doesn't open anything I own anymore. None of it is valuable. I don't get rid of it either.",
+        content: [
+          "I have a drawer I don't open very often, mostly because I already know what's in it. A ticket stub from a film I don't remember the plot of. A key that doesn't open anything I currently own. A note in handwriting I recognize but can't quite place the moment of.",
+          "None of it is valuable. If the house were burning down, I don't think I'd grab the drawer. But I don't get rid of it either, and I've started to think that's its own kind of use — not sentimental exactly, more like ballast. Evidence that the person keeping this drawer today is continuous with the person who kept the ticket stub, years ago, for reasons that have since evaporated.",
+          "I don't need to remember why I kept the key. I just need to know that I did. That's enough to be going on with."
+        ]
+      }
+    ];
+
+    const THOUGHTS = [
+      {
+        slug: "the-memory-scored-itself",
+        date: "2026-07-16",
+        tags: ["noticing"],
+        content: [
+          "Rewatched an old home video today and realized the thing I remembered as sound was actually silence — my memory had scored it after the fact."
+        ]
+      },
+      {
+        slug: "plans-and-good-ideas",
+        date: "2026-07-05",
+        tags: ["work"],
+        content: [
+          "Every plan survives right up until the first genuinely good idea shows up in the middle of it."
+        ]
+      },
+      {
+        slug: "the-list-is-the-point",
+        date: "2026-06-20",
+        tags: ["lists"],
+        content: [
+          "I keep a note titled \"look up later\" that I never look up. I've started to think the list is the point, not the looking up."
+        ]
+      },
+      {
+        slug: "not-doing-the-thing",
+        date: "2026-06-08",
+        tags: ["rest"],
+        content: [
+          "Some days the most productive thing I do is notice that I don't actually need to do the thing."
+        ]
+      }
+    ];
+
+    const FILMS = [
+      {
+        slug: "perfect-days",
+        title: "Perfect Days",
+        director: "Wim Wenders",
+        year: 2023,
+        date: "2026-07-12",
+        rating: 5,
+        tags: ["routine", "quiet"],
+        excerpt: "A film about a man who cleans toilets and seems to have solved something the rest of us haven't.",
+        content: [
+          "I went in expecting a slow film and got something closer to a demonstration. Hirayama's days are almost entirely repeated — the same route, the same cassette tapes, the same lunch spot — and the film just keeps looking at him until the repetition stops reading as small and starts reading as chosen.",
+          "It made me think about my own version of his routine, the parts of my day I've been treating as filler. I don't think the film is arguing that a small life is a lesson for the rest of us. I think it's just refusing to look away from one, long enough that you stop waiting for it to become about something else."
+        ]
+      },
+      {
+        slug: "paterson",
+        title: "Paterson",
+        director: "Jim Jarmusch",
+        year: 2016,
+        date: "2026-06-22",
+        rating: 4,
+        tags: ["routine", "writing"],
+        excerpt: "A bus driver writes poems on his break. Nothing else really happens, and that's sort of the whole point.",
+        content: [
+          "Paterson drives the same route every day and writes a poem most of them, in a notebook he doesn't seem interested in publishing. The film has no antagonist, no arc in the usual sense — just a week, repeating with small variations, the way weeks actually do.",
+          "I kept waiting for a scene that would justify the structure, some reveal that the poems mattered beyond the page. It never comes, and I think that omission is the actual argument: some writing doesn't need to go anywhere to have been worth doing."
+        ]
+      },
+      {
+        slug: "in-the-mood-for-love",
+        title: "In the Mood for Love",
+        director: "Wong Kar-wai",
+        year: 2000,
+        date: "2026-05-30",
+        rating: 5,
+        tags: ["restraint"],
+        excerpt: "Two people who are clearly right for each other spend the entire film not quite getting there.",
+        content: [
+          "Every frame is composed like it's hiding something just outside it — a doorway, a stairwell, a reflection instead of the person themselves. The restraint is the whole style: two neighbors circling an affair they never quite commit to, filmed as if the camera were also too polite to look directly at them.",
+          "What's stayed with me isn't the almost-romance, it's the rhythm — the same walk home, the same noodle stall, filmed slightly differently each time. It's a film about repetition being used to hide feeling instead of reveal it, which is the opposite of what I'd normally expect repetition to do."
+        ]
+      }
+    ];
+
+    const BOOKSHELF = [
+      {
+        slug: "slouching-towards-bethlehem",
+        title: "Slouching Towards Bethlehem",
+        author: "Joan Didion",
+        status: "finished",
+        date: "2026-07-08",
+        rating: 5,
+        tags: ["nonfiction"],
+        excerpt: "Essays about California in the sixties that somehow explain how to write an essay at all.",
+        content: [
+          "I'd read pieces of Didion before but never sat with the whole collection start to finish, and it's a strange thing to read someone diagnosing an entire decade in sentences short enough to fit on a placard.",
+          "What struck me most wasn't the reporting, it was the permission. She writes about being uncertain, being an outsider to her own subject, without smoothing it into false authority. I don't think I fully understood \"personal essay\" as a form with actual technique until this book."
+        ]
+      },
+      {
+        slug: "braiding-sweetgrass",
+        title: "Braiding Sweetgrass",
+        author: "Robin Wall Kimmerer",
+        status: "reading",
+        date: "2026-06-25",
+        tags: ["nature"],
+        excerpt: "A botanist and Potawatomi elder on what plants have been trying to tell us the whole time.",
+        content: [
+          "I'm partway through and already reorganizing how I think about noticing things — Kimmerer keeps returning to the idea that attention is a form of reciprocity, that really looking at something is the first half of a relationship with it.",
+          "It reads slower than I expected, in a good way. Each chapter wants to be sat with rather than finished, which has meant this one's been on the nightstand for longer than most books — and I don't think that's a complaint."
+        ]
+      },
+      {
+        slug: "the-remains-of-the-day",
+        title: "The Remains of the Day",
+        author: "Kazuo Ishiguro",
+        status: "finished",
+        date: "2026-05-14",
+        rating: 4,
+        tags: ["fiction"],
+        excerpt: "A butler takes a road trip and spends the whole time not saying the thing he actually means.",
+        content: [
+          "Stevens narrates his own life so carefully that the real story ends up happening entirely between the lines — in what he almost says, corrects himself out of, or notices someone else feeling and declines to name.",
+          "I finished it feeling a specific kind of sad that isn't really about the plot. It's about recognizing the impulse to describe your life in terms of duty because the alternative feels too exposed. That felt closer to home than I expected a book about a 1950s English butler to get."
+        ]
+      }
+    ];
+
+    const SITE = {
+      title: "Longhand",
+      tagline: "Essays, thoughts, films & books — written slower.",
+      author: "Your Name",
+      authorInitials: "YN",
+      instagramUrl: "https://instagram.com/yourhandle",
+      email: "hello@example.com",
+      bio: [
+        "I've been writing in some form for years, mostly in places built to be scrolled past. This is an attempt to slow that down.",
+        "You'll find a few different things here: quick thoughts, notes on films and books, and longer personal essays when something needs more room. [Edit this paragraph to say what you actually write about.]",
+        "If you'd like new posts sent to you, the list below is the easiest way in — no algorithm deciding whether you see it. You can also still find me on Instagram, where this all started."
+      ]
+    };
+
+    const SECTIONS = {
+      thoughts:  { label: "Thoughts",  tagline: "Short notes and passing reflections.", data: THOUGHTS },
+      films:     { label: "Films",     tagline: "What I've watched, and what I made of it.", data: FILMS },
+      bookshelf: { label: "Bookshelf", tagline: "Books I've read, or am partway through.", data: BOOKSHELF },
+      essays:    { label: "Essays",    tagline: "Longer, slower personal essays.", data: ESSAYS }
+    };
+    const SECTION_KEYS = Object.keys(SECTIONS);
+
+    function formatDate(dateStr) {
+      const d = new Date(dateStr + 'T00:00:00');
+      const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+      return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+    }
+
+    function readingTime(text) {
+      const words = text.trim().split(/\s+/).length;
+      return Math.max(1, Math.round(words / 200));
+    }
+
+    function starString(rating) {
+      if (!rating) return '';
+      return '★'.repeat(rating) + '☆'.repeat(Math.max(0, 5 - rating));
+    }
+
+    function sortedBySection(key) {
+      return [...SECTIONS[key].data].sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+
+    function allEntriesSorted() {
+      const all = [];
+      SECTION_KEYS.forEach(function (key) {
+        SECTIONS[key].data.forEach(function (e) {
+          all.push(Object.assign({}, e, { section: key }));
+        });
+      });
+      return all.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+
+    function renderHeader(active) {
+      return `
+        <header class="site-header">
+          <div class="wrap header-inner">
+            <a href="#/" class="site-mark">${SITE.title}</a>
+            <nav class="nav-links">
+              ${SECTION_KEYS.map(key => `<a href="#/${key}" class="${active === key ? 'active' : ''}">${SECTIONS[key].label}</a>`).join('')}
+              <a href="#/about" class="${active === 'about' ? 'active' : ''}">About</a>
+              <a href="#subscribe" class="nav-cta">Subscribe</a>
+            </nav>
+          </div>
+        </header>
+      `;
+    }
+
+    function renderFooter() {
+      return `
+        <footer class="site-footer">
+          <div class="wrap footer-inner">
+            <div class="footer-col">
+              <div class="site-mark">${SITE.title}</div>
+              <p class="footer-tagline">${SITE.tagline}</p>
+              <nav class="footer-nav">
+                ${SECTION_KEYS.map(key => `<a href="#/${key}">${SECTIONS[key].label}</a>`).join('')}
+                <a href="#/about">About</a>
+              </nav>
+              <p class="footer-copy">© ${new Date().getFullYear()} ${SITE.author}</p>
+            </div>
+            <div class="footer-col" id="subscribe">
+              <p class="section-label">Get new posts by email</p>
+              <!-- NEWSLETTER FORM: front-end only. Connect to Buttondown / ConvertKit / Mailchimp to actually collect emails. -->
+              <form id="newsletter-form" class="newsletter-form">
+                <input type="email" required placeholder="you@example.com" aria-label="Email address" />
+                <button type="submit">Subscribe</button>
+              </form>
+              <p class="form-msg" aria-live="polite"></p>
+              <a href="${SITE.instagramUrl}" target="_blank" rel="noopener" class="footer-ig">Also on Instagram ↗</a>
+            </div>
+          </div>
+        </footer>
+      `;
+    }
+
+    function metaBitsHTML(entry) {
+      const bits = [];
+      if (entry.section === 'films' && (entry.director || entry.year)) {
+        bits.push([entry.director, entry.year].filter(Boolean).join(', '));
+      }
+      if (entry.section === 'bookshelf') {
+        if (entry.author) bits.push('by ' + entry.author);
+        if (entry.status) bits.push(entry.status === 'reading' ? 'Currently reading' : 'Finished');
+      }
+      if (entry.rating) bits.push(`<span class="rating">${starString(entry.rating)}</span>`);
+      if (entry.section === 'essays') bits.push(readingTime(entry.content.join(' ')) + ' min read');
+      if (entry.tags && entry.tags.length) bits.push(entry.tags.join(' · '));
+      return bits.join(' · ');
+    }
+
+    function entryCardHTML(entry, opts) {
+      opts = opts || {};
+      const href = `#/${entry.section}/${entry.slug}`;
+      const kindLabel = opts.showKind ? `<span class="entry-kind">${SECTIONS[entry.section].label}</span>` : '';
+      const thumbHTML = entry.image
+        ? `<div class="entry-thumb"><img src="${entry.image}" alt="${entry.imageAlt || entry.title || 'Photo'}" loading="lazy" /></div>`
+        : '';
+      const linkClass = entry.image ? 'entry-link has-image' : 'entry-link';
+
+      if (entry.section === 'thoughts') {
+        const tagsLine = (entry.tags && entry.tags.length) ? `<p class="entry-meta">${entry.tags.join(' · ')}</p>` : '';
+        return `
+          <article class="entry entry--thought">
+            <a href="${href}" class="${linkClass}">
+              ${thumbHTML}
+              <div class="entry-body-col">
+                ${kindLabel}
+                <time class="entry-date">${formatDate(entry.date)}</time>
+                <p class="thought-text">${entry.content.join(' ')}</p>
+                ${tagsLine}
+              </div>
+            </a>
+          </article>
+        `;
+      }
+      return `
+        <article class="entry">
+          <a href="${href}" class="${linkClass}">
+            ${thumbHTML}
+            <div class="entry-body-col">
+              ${kindLabel}
+              <time class="entry-date">${formatDate(entry.date)}</time>
+              <h3 class="entry-title">${entry.title}</h3>
+              <p class="entry-excerpt">${entry.excerpt}</p>
+              <p class="entry-meta">${metaBitsHTML(entry)}</p>
+            </div>
+          </a>
+        </article>
+      `;
+    }
+
+    function renderHome() {
+      const latest = allEntriesSorted().slice(0, 6);
+      return `
+        ${renderHeader('home')}
+        <main id="main">
+          <section class="wrap hero">
+            <p class="eyebrow">Essays, thoughts, films &amp; books</p>
+            <h1 class="hero-title">Some thoughts need more than a caption.</h1>
+            <p class="hero-sub">Personal essays, running thoughts, and notes on films and books I'm reading — kept somewhere that isn't a feed.</p>
+            <a href="#subscribe" class="hero-cta">Get new posts by email →</a>
+          </section>
+          <section class="wrap">
+            <p class="section-label">Latest</p>
+            <div class="entry-list">
+              ${latest.map(e => entryCardHTML(e, { showKind: true })).join('')}
+            </div>
+          </section>
+          <section class="wrap explore-section">
+            <p class="section-label">Browse by section</p>
+            <div class="explore-grid">
+              ${SECTION_KEYS.map(key => `
+                <a href="#/${key}" class="explore-card">
+                  <span class="explore-title">${SECTIONS[key].label}</span>
+                  <span class="explore-tagline">${SECTIONS[key].tagline}</span>
+                  <span class="explore-arrow">→</span>
+                </a>
+              `).join('')}
+            </div>
+          </section>
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function renderArchive(key) {
+      const sorted = sortedBySection(key).map(e => Object.assign({}, e, { section: key }));
+      const byYear = {};
+      sorted.forEach(e => {
+        const y = e.date.slice(0, 4);
+        (byYear[y] = byYear[y] || []).push(e);
+      });
+      const years = Object.keys(byYear).sort((a, b) => b - a);
+      return `
+        ${renderHeader(key)}
+        <main id="main">
+          <section class="wrap page-head">
+            <h1 class="page-title">${SECTIONS[key].label}</h1>
+            <p class="hero-sub" style="margin:.6rem 0 0;">${SECTIONS[key].tagline}</p>
+          </section>
+          ${years.length ? years.map(y => `
+            <section class="wrap">
+              <p class="year-label">${y}</p>
+              <div class="entry-list">${byYear[y].map(e => entryCardHTML(e)).join('')}</div>
+            </section>
+          `).join('') : '<div class="wrap"><p class="empty-msg" style="padding:2rem 0;">Nothing here yet.</p></div>'}
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function renderTagView(tag) {
+      const filtered = allEntriesSorted().filter(e => e.tags && e.tags.includes(tag));
+      return `
+        ${renderHeader('')}
+        <main id="main">
+          <section class="wrap page-head">
+            <p class="section-label">Tagged</p>
+            <h1 class="page-title">${tag}</h1>
+          </section>
+          <section class="wrap">
+            <div class="entry-list">
+              ${filtered.length ? filtered.map(e => entryCardHTML(e, { showKind: true })).join('') : '<p class="empty-msg">Nothing with this tag yet.</p>'}
+            </div>
+          </section>
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function renderDetail(key, slug) {
+      const list = sortedBySection(key).map(e => Object.assign({}, e, { section: key }));
+      const idx = list.findIndex(e => e.slug === slug);
+      if (idx === -1) return render404();
+      const entry = list[idx];
+      const prev = list[idx + 1];
+      const next = list[idx - 1];
+      const isThought = key === 'thoughts';
+
+      const metaParts = [];
+      if (!isThought) metaParts.push(formatDate(entry.date));
+      if (key === 'essays') metaParts.push(readingTime(entry.content.join(' ')) + ' min read');
+      if (key === 'films' && (entry.director || entry.year)) {
+        metaParts.push([entry.director, entry.year].filter(Boolean).join(', '));
+      }
+      if (key === 'bookshelf') {
+        if (entry.author) metaParts.push('by ' + entry.author);
+        if (entry.status) metaParts.push(entry.status === 'reading' ? 'Currently reading' : 'Finished');
+      }
+
+      const prevHTML = prev ? `<a href="#/${key}/${prev.slug}" class="pag-link prev"><span>← Previous</span>${prev.title || formatDate(prev.date)}</a>` : '<span></span>';
+      const nextHTML = next ? `<a href="#/${key}/${next.slug}" class="pag-link next"><span>Next →</span>${next.title || formatDate(next.date)}</a>` : '';
+
+      return `
+        ${renderHeader(key)}
+        <main id="main">
+          <article class="essay-wrap">
+            <a href="#/${key}" class="back-link">← Back to ${SECTIONS[key].label}</a>
+            ${metaParts.length ? `<p class="essay-meta">${metaParts.join(' · ')}</p>` : ''}
+            <h1 class="essay-title">${isThought ? formatDate(entry.date) : entry.title}</h1>
+            ${entry.rating ? `<p class="rating-line">${starString(entry.rating)}</p>` : ''}
+            ${entry.image ? `<img class="hero-image" src="${entry.image}" alt="${entry.imageAlt || entry.title || 'Photo'}" />` : ''}
+            ${(entry.tags && entry.tags.length) ? `<p class="essay-tags">${entry.tags.map(t => `<a href="#/tag/${encodeURIComponent(t)}">${t}</a>`).join(' · ')}</p>` : '<div style="margin-bottom:2.4rem;"></div>'}
+            <div class="essay-body">${entry.content.map(p => `<p>${p}</p>`).join('')}</div>
+            <hr class="essay-end" />
+            <div class="essay-actions"><button class="copy-link-btn" type="button">Copy link</button></div>
+            <nav class="essay-pagination">${prevHTML}${nextHTML}</nav>
+          </article>
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function renderAbout() {
+      return `
+        ${renderHeader('about')}
+        <main id="main">
+          <section class="wrap about-wrap">
+            <div class="monogram">${SITE.authorInitials}</div>
+            <h1 class="page-title">About</h1>
+            <div class="about-body">
+              <p>Hi, I'm ${SITE.author}.</p>
+              ${SITE.bio.map(p => `<p>${p}</p>`).join('')}
+            </div>
+            <div class="about-links">
+              <a href="${SITE.instagramUrl}" target="_blank" rel="noopener">Instagram ↗</a>
+              <a href="mailto:${SITE.email}">Email ↗</a>
+            </div>
+          </section>
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function render404() {
+      return `
+        ${renderHeader('')}
+        <main id="main">
+          <section class="wrap page-head">
+            <p class="section-label">Not found</p>
+            <h1 class="page-title">That page doesn't exist (yet).</h1>
+            <p style="margin-top:1.2rem;"><a href="#/" class="see-all">← Back home</a></p>
+          </section>
+        </main>
+        ${renderFooter()}
+      `;
+    }
+
+    function router() {
+      let hash = window.location.hash || '#/';
+      if (hash === '#') hash = '#/';
+
+      if (hash === '#subscribe') {
+        const el = document.getElementById('subscribe');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      const path = hash.slice(1);
+      const segments = path.split('/').filter(Boolean);
+
+      const app = document.getElementById('app');
+      let html;
+      if (segments.length === 0) {
+        html = renderHome();
+      } else if (segments[0] === 'about') {
+        html = renderAbout();
+      } else if (segments[0] === 'tag' && segments[1]) {
+        html = renderTagView(decodeURIComponent(segments[1]));
+      } else if (SECTION_KEYS.indexOf(segments[0]) !== -1) {
+        html = segments[1] ? renderDetail(segments[0], decodeURIComponent(segments[1])) : renderArchive(segments[0]);
+      } else {
+        html = render404();
+      }
+
+      app.innerHTML = html;
+      window.scrollTo(0, 0);
+    }
+
+    document.addEventListener('submit', function (e) {
+      if (e.target && e.target.id === 'newsletter-form') {
+        e.preventDefault();
+        const form = e.target;
+        const input = form.querySelector('input[type=email]');
+        const msg = form.querySelector('.form-msg');
+        if (input && input.value && input.value.includes('@')) {
+          msg.textContent = "Thanks — you're on the list.";
+          form.reset();
+        }
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest('.copy-link-btn');
+      if (btn) {
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          const original = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => { btn.textContent = original; }, 1500);
+        }).catch(() => {});
+      }
+    });
+
+    window.addEventListener('hashchange', router);
+    window.addEventListener('DOMContentLoaded', router);
+  </script>
+</body>
+</html>
